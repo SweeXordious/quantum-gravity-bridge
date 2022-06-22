@@ -53,6 +53,7 @@ contract QuantumGravityBridge is IDAOracle {
     uint256 public state_powerThreshold;
     /// @notice Nonce for bridge events. Must be incremented sequentially.
     uint256 public state_eventNonce;
+    uint256 public state_previousValsetNonce;
     /// @notice Mapping of data root tuple root nonces to data root tuple roots.
     mapping(uint256 => bytes32) public state_dataRootTupleRoots;
 
@@ -121,6 +122,7 @@ contract QuantumGravityBridge is IDAOracle {
 
         // EFFECTS
 
+        state_previousValsetNonce = _nonce;
         state_eventNonce = _nonce;
         state_lastValidatorSetCheckpoint = newCheckpoint;
         state_powerThreshold = _powerThreshold;
@@ -272,7 +274,7 @@ contract QuantumGravityBridge is IDAOracle {
         // Check that the supplied current validator set matches the saved checkpoint.
         bytes32 currentValidatorSetHash = computeValidatorSetHash(_currentValidatorSet);
         if (
-            domainSeparateValidatorSetHash(BRIDGE_ID, currentNonce, currentPowerThreshold, currentValidatorSetHash) !=
+            domainSeparateValidatorSetHash(BRIDGE_ID, state_previousValsetNonce, currentPowerThreshold, currentValidatorSetHash) !=
             state_lastValidatorSetCheckpoint
         ) {
             revert SuppliedValidatorSetInvalid();
@@ -291,6 +293,7 @@ contract QuantumGravityBridge is IDAOracle {
 
         state_lastValidatorSetCheckpoint = newCheckpoint;
         state_powerThreshold = _newPowerThreshold;
+        state_previousValsetNonce = _newNonce;
         state_eventNonce = _newNonce;
 
         // LOGS
