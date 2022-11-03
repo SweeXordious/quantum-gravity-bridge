@@ -21,7 +21,7 @@ library NamespaceMerkleTree {
         NamespaceMerkleProof memory proof,
         bytes8 minmaxNID,
         bytes memory data
-    ) internal pure returns (bool) {
+    ) external pure returns (bool) {
         // A sibling at height 1 is created by getting the leafDigest of the original data.
         NamespaceNode memory node = leafDigest(minmaxNID, data);
 

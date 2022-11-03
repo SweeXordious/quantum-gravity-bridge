@@ -8,6 +8,8 @@ import "./DataRootTuple.sol";
 import "./IDAOracle.sol";
 import "./lib/tree/binary/BinaryMerkleProof.sol";
 import "./lib/tree/binary/BinaryMerkleTree.sol";
+import "./lib/tree/namespace/NamespaceMerkleTree.sol";
+import "./lib/tree/namespace/NamespaceMerkleProof.sol";
 
 struct Validator {
     address addr;
@@ -375,7 +377,7 @@ contract QuantumGravityBridge is IDAOracle {
         uint256 _tupleRootNonce,
         DataRootTuple memory _tuple,
         BinaryMerkleProof memory _proof
-    ) external view override returns (bool) {
+    ) public view returns (bool) {
         // Tuple must have been committed before.
         if (_tupleRootNonce > state_eventNonce) {
             return false;
@@ -388,5 +390,74 @@ contract QuantumGravityBridge is IDAOracle {
         bool isProofValid = BinaryMerkleTree.verify(root, _proof, abi.encode(_tuple));
 
         return isProofValid;
+    }
+
+//    function verifyRowToRootInclusion(
+//        bytes memory root,
+//        bytes memory rowData,
+//        BinaryMerkleProof memory _proof
+//    ) external view override returns (bool) {
+//        // Verify the proof.
+//        bool isProofValid = BinaryMerkleTree.verify(root, _proof, rowData);
+//        return isProofValid;
+//    }
+
+    /// @dev see "./IDAOracle.sol"
+    function verifySharesInclusion(
+        NamespaceNode[] memory _namespacedRowRoots,
+        bytes[] memory _sharesSets,
+        NamespaceMerkleProof[] memory _sharesSetsProofs,
+        bytes8 _namespaceID,
+
+        BinaryMerkleProof[] memory _rowsProofs,
+        bytes[] memory _rowRoots,
+
+        uint256 _tupleRootNonce,
+        DataRootTuple memory _tuple,
+        BinaryMerkleProof memory _dataRootProof
+    ) external view override returns (bool) {
+        if (_rowsProofs.length != _namespacedRowRoots.length) {
+            return false;
+        }
+        if (_sharesSetsProofs.length != _sharesSetsProofs.length) {
+            return false;
+        }
+        if (_sharesSetsProofs.length != _namespacedRowRoots.length) {
+            return false;
+        }
+        if (_rowRoots.length != _namespacedRowRoots.length) {
+            return false;
+        }
+
+        bool isValid = false;
+
+        // verify shares inclusion in rows
+        for (uint32 i = 0; i < _sharesSetsProofs.length; i++) {
+            isValid = NamespaceMerkleTree.verify(
+                _namespacedRowRoots[i],
+                _sharesSetsProofs[i],
+                _namespaceID,
+                _sharesSets[i]
+            );
+            if (!isValid) {
+                return false;
+            }
+        }
+
+        // verify rows inclusion in data root
+        for (uint32 i = 0; i < _rowsProofs.length; i++) {
+            isValid = BinaryMerkleTree.verify(_tuple.dataRoot, _rowsProofs[i], _rowRoots[i]);
+            if (!isValid) {
+                return false;
+            }
+        }
+
+        // verify data root inclusion in data root tuple root
+        isValid = verifyAttestation(
+            _tupleRootNonce,
+            _tuple,
+            _dataRootProof
+        );
+        return isValid;
     }
 }

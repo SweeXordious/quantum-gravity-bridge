@@ -41,6 +41,20 @@ type DataRootTuple struct {
 	DataRoot [32]byte
 }
 
+// NamespaceMerkleProof is an auto generated low-level Go binding around an user-defined struct.
+type NamespaceMerkleProof struct {
+	SideNodes []NamespaceNode
+	Key       *big.Int
+	NumLeaves *big.Int
+}
+
+// NamespaceNode is an auto generated low-level Go binding around an user-defined struct.
+type NamespaceNode struct {
+	Min    [8]byte
+	Max    [8]byte
+	Digest [32]byte
+}
+
 // Signature is an auto generated low-level Go binding around an user-defined struct.
 type Signature struct {
 	V uint8
@@ -57,7 +71,7 @@ type Validator struct {
 // BinaryMerkleTreeMetaData contains all meta data concerning the BinaryMerkleTree contract.
 var BinaryMerkleTreeMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122098f27f05b7380e7c42bfe42ac165239b01f2d2ebcd7fd9dcf47a5b2d2645d03364736f6c634300080f0033",
+	Bin: "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212207eadb80a7580ae404794766e2bdef99e27e061ef3413cdabf850b8262fd6415964736f6c63430008090033",
 }
 
 // BinaryMerkleTreeABI is the input ABI used to generate the binding from.
@@ -230,7 +244,7 @@ func (_BinaryMerkleTree *BinaryMerkleTreeTransactorRaw) Transact(opts *bind.Tran
 // ConstantsMetaData contains all meta data concerning the Constants contract.
 var ConstantsMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122091baf0bdbe84731c6f2e7af6540d7ef708350a644d4739d5bd140218532aabcf64736f6c634300080f0033",
+	Bin: "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212208f868974afcbbf9b36869e2284f3eb5ebe16ddff65eb1593f2f10039702dce5664736f6c63430008090033",
 }
 
 // ConstantsABI is the input ABI used to generate the binding from.
@@ -403,7 +417,7 @@ func (_Constants *ConstantsTransactorRaw) Transact(opts *bind.TransactOpts, meth
 // ECDSAMetaData contains all meta data concerning the ECDSA contract.
 var ECDSAMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220e1394c7a6a983f058b66b2aae8d3c41bbd685c107783073f873fd2c5d97e3edd64736f6c634300080f0033",
+	Bin: "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220333ac9e98839ed5aa8c16d658fffd68e1cdbc5fb35ef9efab71b442b1f20217b64736f6c63430008090033",
 }
 
 // ECDSAABI is the input ABI used to generate the binding from.
@@ -575,9 +589,9 @@ func (_ECDSA *ECDSATransactorRaw) Transact(opts *bind.TransactOpts, method strin
 
 // IDAOracleMetaData contains all meta data concerning the IDAOracle contract.
 var IDAOracleMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tupleRootNonce\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"height\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"dataRoot\",\"type\":\"bytes32\"}],\"internalType\":\"structDataRootTuple\",\"name\":\"_tuple\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"bytes32[]\",\"name\":\"sideNodes\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint256\",\"name\":\"key\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"numLeaves\",\"type\":\"uint256\"}],\"internalType\":\"structBinaryMerkleProof\",\"name\":\"_proof\",\"type\":\"tuple\"}],\"name\":\"verifyAttestation\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[{\"components\":[{\"internalType\":\"bytes8\",\"name\":\"min\",\"type\":\"bytes8\"},{\"internalType\":\"bytes8\",\"name\":\"max\",\"type\":\"bytes8\"},{\"internalType\":\"bytes32\",\"name\":\"digest\",\"type\":\"bytes32\"}],\"internalType\":\"structNamespaceNode[]\",\"name\":\"_namespacedRowRoots\",\"type\":\"tuple[]\"},{\"internalType\":\"bytes[]\",\"name\":\"_sharesSets\",\"type\":\"bytes[]\"},{\"components\":[{\"components\":[{\"internalType\":\"bytes8\",\"name\":\"min\",\"type\":\"bytes8\"},{\"internalType\":\"bytes8\",\"name\":\"max\",\"type\":\"bytes8\"},{\"internalType\":\"bytes32\",\"name\":\"digest\",\"type\":\"bytes32\"}],\"internalType\":\"structNamespaceNode[]\",\"name\":\"sideNodes\",\"type\":\"tuple[]\"},{\"internalType\":\"uint256\",\"name\":\"key\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"numLeaves\",\"type\":\"uint256\"}],\"internalType\":\"structNamespaceMerkleProof[]\",\"name\":\"_sharesSetsProofs\",\"type\":\"tuple[]\"},{\"internalType\":\"bytes8\",\"name\":\"_namespaceID\",\"type\":\"bytes8\"},{\"components\":[{\"internalType\":\"bytes32[]\",\"name\":\"sideNodes\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint256\",\"name\":\"key\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"numLeaves\",\"type\":\"uint256\"}],\"internalType\":\"structBinaryMerkleProof[]\",\"name\":\"_rowsProofs\",\"type\":\"tuple[]\"},{\"internalType\":\"bytes[]\",\"name\":\"_rowRoots\",\"type\":\"bytes[]\"},{\"internalType\":\"uint256\",\"name\":\"_tupleRootNonce\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"height\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"dataRoot\",\"type\":\"bytes32\"}],\"internalType\":\"structDataRootTuple\",\"name\":\"_tuple\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"bytes32[]\",\"name\":\"sideNodes\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint256\",\"name\":\"key\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"numLeaves\",\"type\":\"uint256\"}],\"internalType\":\"structBinaryMerkleProof\",\"name\":\"_dataRootProof\",\"type\":\"tuple\"}],\"name\":\"verifySharesInclusion\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
 	Sigs: map[string]string{
-		"1f3302a9": "verifyAttestation(uint256,(uint256,bytes32),(bytes32[],uint256,uint256))",
+		"a93527b3": "verifySharesInclusion((bytes8,bytes8,bytes32)[],bytes[],((bytes8,bytes8,bytes32)[],uint256,uint256)[],bytes8,(bytes32[],uint256,uint256)[],bytes[],uint256,(uint256,bytes32),(bytes32[],uint256,uint256))",
 	},
 }
 
@@ -731,12 +745,12 @@ func (_IDAOracle *IDAOracleTransactorRaw) Transact(opts *bind.TransactOpts, meth
 	return _IDAOracle.Contract.contract.Transact(opts, method, params...)
 }
 
-// VerifyAttestation is a free data retrieval call binding the contract method 0x1f3302a9.
+// VerifySharesInclusion is a free data retrieval call binding the contract method 0xa93527b3.
 //
-// Solidity: function verifyAttestation(uint256 _tupleRootNonce, (uint256,bytes32) _tuple, (bytes32[],uint256,uint256) _proof) view returns(bool)
-func (_IDAOracle *IDAOracleCaller) VerifyAttestation(opts *bind.CallOpts, _tupleRootNonce *big.Int, _tuple DataRootTuple, _proof BinaryMerkleProof) (bool, error) {
+// Solidity: function verifySharesInclusion((bytes8,bytes8,bytes32)[] _namespacedRowRoots, bytes[] _sharesSets, ((bytes8,bytes8,bytes32)[],uint256,uint256)[] _sharesSetsProofs, bytes8 _namespaceID, (bytes32[],uint256,uint256)[] _rowsProofs, bytes[] _rowRoots, uint256 _tupleRootNonce, (uint256,bytes32) _tuple, (bytes32[],uint256,uint256) _dataRootProof) view returns(bool)
+func (_IDAOracle *IDAOracleCaller) VerifySharesInclusion(opts *bind.CallOpts, _namespacedRowRoots []NamespaceNode, _sharesSets [][]byte, _sharesSetsProofs []NamespaceMerkleProof, _namespaceID [8]byte, _rowsProofs []BinaryMerkleProof, _rowRoots [][]byte, _tupleRootNonce *big.Int, _tuple DataRootTuple, _dataRootProof BinaryMerkleProof) (bool, error) {
 	var out []interface{}
-	err := _IDAOracle.contract.Call(opts, &out, "verifyAttestation", _tupleRootNonce, _tuple, _proof)
+	err := _IDAOracle.contract.Call(opts, &out, "verifySharesInclusion", _namespacedRowRoots, _sharesSets, _sharesSetsProofs, _namespaceID, _rowsProofs, _rowRoots, _tupleRootNonce, _tuple, _dataRootProof)
 
 	if err != nil {
 		return *new(bool), err
@@ -748,23 +762,234 @@ func (_IDAOracle *IDAOracleCaller) VerifyAttestation(opts *bind.CallOpts, _tuple
 
 }
 
-// VerifyAttestation is a free data retrieval call binding the contract method 0x1f3302a9.
+// VerifySharesInclusion is a free data retrieval call binding the contract method 0xa93527b3.
 //
-// Solidity: function verifyAttestation(uint256 _tupleRootNonce, (uint256,bytes32) _tuple, (bytes32[],uint256,uint256) _proof) view returns(bool)
-func (_IDAOracle *IDAOracleSession) VerifyAttestation(_tupleRootNonce *big.Int, _tuple DataRootTuple, _proof BinaryMerkleProof) (bool, error) {
-	return _IDAOracle.Contract.VerifyAttestation(&_IDAOracle.CallOpts, _tupleRootNonce, _tuple, _proof)
+// Solidity: function verifySharesInclusion((bytes8,bytes8,bytes32)[] _namespacedRowRoots, bytes[] _sharesSets, ((bytes8,bytes8,bytes32)[],uint256,uint256)[] _sharesSetsProofs, bytes8 _namespaceID, (bytes32[],uint256,uint256)[] _rowsProofs, bytes[] _rowRoots, uint256 _tupleRootNonce, (uint256,bytes32) _tuple, (bytes32[],uint256,uint256) _dataRootProof) view returns(bool)
+func (_IDAOracle *IDAOracleSession) VerifySharesInclusion(_namespacedRowRoots []NamespaceNode, _sharesSets [][]byte, _sharesSetsProofs []NamespaceMerkleProof, _namespaceID [8]byte, _rowsProofs []BinaryMerkleProof, _rowRoots [][]byte, _tupleRootNonce *big.Int, _tuple DataRootTuple, _dataRootProof BinaryMerkleProof) (bool, error) {
+	return _IDAOracle.Contract.VerifySharesInclusion(&_IDAOracle.CallOpts, _namespacedRowRoots, _sharesSets, _sharesSetsProofs, _namespaceID, _rowsProofs, _rowRoots, _tupleRootNonce, _tuple, _dataRootProof)
 }
 
-// VerifyAttestation is a free data retrieval call binding the contract method 0x1f3302a9.
+// VerifySharesInclusion is a free data retrieval call binding the contract method 0xa93527b3.
 //
-// Solidity: function verifyAttestation(uint256 _tupleRootNonce, (uint256,bytes32) _tuple, (bytes32[],uint256,uint256) _proof) view returns(bool)
-func (_IDAOracle *IDAOracleCallerSession) VerifyAttestation(_tupleRootNonce *big.Int, _tuple DataRootTuple, _proof BinaryMerkleProof) (bool, error) {
-	return _IDAOracle.Contract.VerifyAttestation(&_IDAOracle.CallOpts, _tupleRootNonce, _tuple, _proof)
+// Solidity: function verifySharesInclusion((bytes8,bytes8,bytes32)[] _namespacedRowRoots, bytes[] _sharesSets, ((bytes8,bytes8,bytes32)[],uint256,uint256)[] _sharesSetsProofs, bytes8 _namespaceID, (bytes32[],uint256,uint256)[] _rowsProofs, bytes[] _rowRoots, uint256 _tupleRootNonce, (uint256,bytes32) _tuple, (bytes32[],uint256,uint256) _dataRootProof) view returns(bool)
+func (_IDAOracle *IDAOracleCallerSession) VerifySharesInclusion(_namespacedRowRoots []NamespaceNode, _sharesSets [][]byte, _sharesSetsProofs []NamespaceMerkleProof, _namespaceID [8]byte, _rowsProofs []BinaryMerkleProof, _rowRoots [][]byte, _tupleRootNonce *big.Int, _tuple DataRootTuple, _dataRootProof BinaryMerkleProof) (bool, error) {
+	return _IDAOracle.Contract.VerifySharesInclusion(&_IDAOracle.CallOpts, _namespacedRowRoots, _sharesSets, _sharesSetsProofs, _namespaceID, _rowsProofs, _rowRoots, _tupleRootNonce, _tuple, _dataRootProof)
+}
+
+// NamespaceMerkleTreeMetaData contains all meta data concerning the NamespaceMerkleTree contract.
+var NamespaceMerkleTreeMetaData = &bind.MetaData{
+	ABI: "[{\"inputs\":[{\"components\":[{\"internalType\":\"bytes8\",\"name\":\"min\",\"type\":\"bytes8\"},{\"internalType\":\"bytes8\",\"name\":\"max\",\"type\":\"bytes8\"},{\"internalType\":\"bytes32\",\"name\":\"digest\",\"type\":\"bytes32\"}],\"internalType\":\"structNamespaceNode\",\"name\":\"root\",\"type\":\"tuple\"},{\"components\":[{\"components\":[{\"internalType\":\"bytes8\",\"name\":\"min\",\"type\":\"bytes8\"},{\"internalType\":\"bytes8\",\"name\":\"max\",\"type\":\"bytes8\"},{\"internalType\":\"bytes32\",\"name\":\"digest\",\"type\":\"bytes32\"}],\"internalType\":\"structNamespaceNode[]\",\"name\":\"sideNodes\",\"type\":\"tuple[]\"},{\"internalType\":\"uint256\",\"name\":\"key\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"numLeaves\",\"type\":\"uint256\"}],\"internalType\":\"structNamespaceMerkleProof\",\"name\":\"proof\",\"type\":\"tuple\"},{\"internalType\":\"bytes8\",\"name\":\"minmaxNID\",\"type\":\"bytes8\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"verify\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}]",
+	Sigs: map[string]string{
+		"e8c25a15": "verify(NamespaceNode,NamespaceMerkleProof,bytes8,bytes)",
+	},
+	Bin: "0x610af761003a600b82828239805160001a60731461002d57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600436106100355760003560e01c8063e8c25a151461003a575b600080fd5b61004d610048366004610854565b610061565b604051901515815260200160405180910390f35b60008061006e8484610089565b905061007d868683600161014d565b9150505b949350505050565b604080516060810182526000808252602082018190529181019190915260006002600060f81b8586866040516020016100c594939291906109c2565b60408051601f19818403018152908290526100df91610a00565b602060405180830381855afa1580156100fc573d6000803e3d6000fd5b5050506040513d601f19601f8201168201806040525081019061011f9190610a0c565b604080516060810182526001600160c01b031987168082526020820152908101919091529150505b92915050565b6000600182101561016057506000610081565b600061016d600184610a3b565b90506001856040015111610192578451511561018d576000915050610081565b6101c1565b6101a485602001518660400151610433565b8551516101b2908390610a52565b146101c1576000915050610081565b84604001518560200151106101da576000915050610081565b84515161020a57846040015160011415610200576101f886856104ba565b915050610081565b6000915050610081565b602085015183905b60208701516000906001841b9061022a908290610a6a565b6102349190610a8c565b90506000600161024681861b84610a52565b6102509190610a3b565b905088604001518110610264575050610356565b915081610272600185610a3b565b895151610280908790610a52565b1161029357600095505050505050610081565b600161029f8686610a3b565b6102a99190610a3b565b6001901b828a602001516102bd9190610a3b565b10156103055788516102fe90899060016102d78989610a3b565b6102e19190610a3b565b815181106102f1576102f1610aab565b6020026020010151610511565b9750610342565b885161033f9060016103178888610a3b565b6103219190610a3b565b8151811061033157610331610aab565b602002602001015189610511565b97505b61034d600185610a52565b93505050610212565b600187604001516103679190610a3b565b81146103b057610378600183610a3b565b8751511161038c5760009350505050610081565b86516103a090879060016102d78787610a3b565b95506103ad600183610a52565b91505b86515160016103bf8585610a3b565b6103c99190610a3b565b101561041d5786516104099060016103e18686610a3b565b6103eb9190610a3b565b815181106103fb576103fb610aab565b602002602001015187610511565b9550610416600183610a52565b91506103b0565b61042788876104ba565b98975050505050505050565b600061043e8261068b565b61044a90610100610a3b565b90506000610459600183610a3b565b6001901b905060018161046c9190610a3b565b84116104785750610147565b806001141561048b576001915050610147565b6104a76104988286610a3b565b6104a28386610a3b565b610433565b6104b2906001610a52565b915050610147565b805182516000916001600160c01b031991821691161480156104f7575081602001516001600160c01b03191683602001516001600160c01b031916145b801561050a575081604001518360400151145b9392505050565b60408051606081018252600080825260208201819052918101919091528251825160009161053e916106b8565b84519091506000906001600160c01b0319908116141561056757506001600160c01b031961059b565b83516001600160c01b031990811614156105865750602084015161059b565b610598856020015185602001516106d7565b90505b84516020808701516040808901518851898501518a8401519351600160f81b968101969096526001600160c01b03199687166021870152938616602986015260318501919091528416605184015292166059820152606181019190915260009060029060810160408051601f198184030181529082905261061b91610a00565b602060405180830381855afa158015610638573d6000803e3d6000fd5b5050506040513d601f19601f8201168201806040525081019061065b9190610a0c565b604080516060810182526001600160c01b0319958616815293909416602084015292820192909252949350505050565b60005b81816001901b10156106ac576106a5600182610a52565b905061068e565b61014781610100610a3b565b600060c082811c9084901c10156106d0575081610147565b5080610147565b600060c082811c9084901c11156106d0575081610147565b634e487b7160e01b600052604160045260246000fd5b6040516060810167ffffffffffffffff81118282101715610728576107286106ef565b60405290565b604051601f8201601f1916810167ffffffffffffffff81118282101715610757576107576106ef565b604052919050565b80356001600160c01b03198116811461077757600080fd5b919050565b60006060828403121561078e57600080fd5b6040516060810181811067ffffffffffffffff821117156107b1576107b16106ef565b6040529050806107c08361075f565b81526107ce6020840161075f565b6020820152604083013560408201525092915050565b600082601f8301126107f557600080fd5b813567ffffffffffffffff81111561080f5761080f6106ef565b610822601f8201601f191660200161072e565b81815284602083860101111561083757600080fd5b816020850160208301376000918101602001919091529392505050565b60008060008060c0858703121561086a57600080fd5b610874868661077c565b935060608086013567ffffffffffffffff8082111561089257600080fd5b818801915082828a0312156108a657600080fd5b6108ae610705565b8235828111156108bd57600080fd5b8301601f81018b136108ce57600080fd5b80356020848211156108e2576108e26106ef565b6108f0818360051b0161072e565b8281529187028301810191818101908e84111561090c57600080fd5b938201935b83851015610932576109238f8661077c565b82529388019390820190610911565b855250858101359084015250506040808401359082015295506109576080890161075f565b945060a088013592508083111561096d57600080fd5b505061097b878288016107e4565b91505092959194509250565b6000815160005b818110156109a8576020818501810151868301520161098e565b818111156109b7576000828601525b509290920192915050565b6001600160f81b0319851681526001600160c01b031984811660018301528316600982015260006109f66011830184610987565b9695505050505050565b600061050a8284610987565b600060208284031215610a1e57600080fd5b5051919050565b634e487b7160e01b600052601160045260246000fd5b600082821015610a4d57610a4d610a25565b500390565b60008219821115610a6557610a65610a25565b500190565b600082610a8757634e487b7160e01b600052601260045260246000fd5b500490565b6000816000190483118215151615610aa657610aa6610a25565b500290565b634e487b7160e01b600052603260045260246000fdfea2646970667358221220f499939139bfffb2edd7c3f064da78ec9f0d359d075100685e0ede502035b9bc64736f6c63430008090033",
+}
+
+// NamespaceMerkleTreeABI is the input ABI used to generate the binding from.
+// Deprecated: Use NamespaceMerkleTreeMetaData.ABI instead.
+var NamespaceMerkleTreeABI = NamespaceMerkleTreeMetaData.ABI
+
+// Deprecated: Use NamespaceMerkleTreeMetaData.Sigs instead.
+// NamespaceMerkleTreeFuncSigs maps the 4-byte function signature to its string representation.
+var NamespaceMerkleTreeFuncSigs = NamespaceMerkleTreeMetaData.Sigs
+
+// NamespaceMerkleTreeBin is the compiled bytecode used for deploying new contracts.
+// Deprecated: Use NamespaceMerkleTreeMetaData.Bin instead.
+var NamespaceMerkleTreeBin = NamespaceMerkleTreeMetaData.Bin
+
+// DeployNamespaceMerkleTree deploys a new Ethereum contract, binding an instance of NamespaceMerkleTree to it.
+func DeployNamespaceMerkleTree(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *NamespaceMerkleTree, error) {
+	parsed, err := NamespaceMerkleTreeMetaData.GetAbi()
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	if parsed == nil {
+		return common.Address{}, nil, nil, errors.New("GetABI returned nil")
+	}
+
+	address, tx, contract, err := bind.DeployContract(auth, *parsed, common.FromHex(NamespaceMerkleTreeBin), backend)
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	return address, tx, &NamespaceMerkleTree{NamespaceMerkleTreeCaller: NamespaceMerkleTreeCaller{contract: contract}, NamespaceMerkleTreeTransactor: NamespaceMerkleTreeTransactor{contract: contract}, NamespaceMerkleTreeFilterer: NamespaceMerkleTreeFilterer{contract: contract}}, nil
+}
+
+// NamespaceMerkleTree is an auto generated Go binding around an Ethereum contract.
+type NamespaceMerkleTree struct {
+	NamespaceMerkleTreeCaller     // Read-only binding to the contract
+	NamespaceMerkleTreeTransactor // Write-only binding to the contract
+	NamespaceMerkleTreeFilterer   // Log filterer for contract events
+}
+
+// NamespaceMerkleTreeCaller is an auto generated read-only Go binding around an Ethereum contract.
+type NamespaceMerkleTreeCaller struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// NamespaceMerkleTreeTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type NamespaceMerkleTreeTransactor struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// NamespaceMerkleTreeFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
+type NamespaceMerkleTreeFilterer struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// NamespaceMerkleTreeSession is an auto generated Go binding around an Ethereum contract,
+// with pre-set call and transact options.
+type NamespaceMerkleTreeSession struct {
+	Contract     *NamespaceMerkleTree // Generic contract binding to set the session for
+	CallOpts     bind.CallOpts        // Call options to use throughout this session
+	TransactOpts bind.TransactOpts    // Transaction auth options to use throughout this session
+}
+
+// NamespaceMerkleTreeCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// with pre-set call options.
+type NamespaceMerkleTreeCallerSession struct {
+	Contract *NamespaceMerkleTreeCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts              // Call options to use throughout this session
+}
+
+// NamespaceMerkleTreeTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// with pre-set transact options.
+type NamespaceMerkleTreeTransactorSession struct {
+	Contract     *NamespaceMerkleTreeTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts              // Transaction auth options to use throughout this session
+}
+
+// NamespaceMerkleTreeRaw is an auto generated low-level Go binding around an Ethereum contract.
+type NamespaceMerkleTreeRaw struct {
+	Contract *NamespaceMerkleTree // Generic contract binding to access the raw methods on
+}
+
+// NamespaceMerkleTreeCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type NamespaceMerkleTreeCallerRaw struct {
+	Contract *NamespaceMerkleTreeCaller // Generic read-only contract binding to access the raw methods on
+}
+
+// NamespaceMerkleTreeTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type NamespaceMerkleTreeTransactorRaw struct {
+	Contract *NamespaceMerkleTreeTransactor // Generic write-only contract binding to access the raw methods on
+}
+
+// NewNamespaceMerkleTree creates a new instance of NamespaceMerkleTree, bound to a specific deployed contract.
+func NewNamespaceMerkleTree(address common.Address, backend bind.ContractBackend) (*NamespaceMerkleTree, error) {
+	contract, err := bindNamespaceMerkleTree(address, backend, backend, backend)
+	if err != nil {
+		return nil, err
+	}
+	return &NamespaceMerkleTree{NamespaceMerkleTreeCaller: NamespaceMerkleTreeCaller{contract: contract}, NamespaceMerkleTreeTransactor: NamespaceMerkleTreeTransactor{contract: contract}, NamespaceMerkleTreeFilterer: NamespaceMerkleTreeFilterer{contract: contract}}, nil
+}
+
+// NewNamespaceMerkleTreeCaller creates a new read-only instance of NamespaceMerkleTree, bound to a specific deployed contract.
+func NewNamespaceMerkleTreeCaller(address common.Address, caller bind.ContractCaller) (*NamespaceMerkleTreeCaller, error) {
+	contract, err := bindNamespaceMerkleTree(address, caller, nil, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &NamespaceMerkleTreeCaller{contract: contract}, nil
+}
+
+// NewNamespaceMerkleTreeTransactor creates a new write-only instance of NamespaceMerkleTree, bound to a specific deployed contract.
+func NewNamespaceMerkleTreeTransactor(address common.Address, transactor bind.ContractTransactor) (*NamespaceMerkleTreeTransactor, error) {
+	contract, err := bindNamespaceMerkleTree(address, nil, transactor, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &NamespaceMerkleTreeTransactor{contract: contract}, nil
+}
+
+// NewNamespaceMerkleTreeFilterer creates a new log filterer instance of NamespaceMerkleTree, bound to a specific deployed contract.
+func NewNamespaceMerkleTreeFilterer(address common.Address, filterer bind.ContractFilterer) (*NamespaceMerkleTreeFilterer, error) {
+	contract, err := bindNamespaceMerkleTree(address, nil, nil, filterer)
+	if err != nil {
+		return nil, err
+	}
+	return &NamespaceMerkleTreeFilterer{contract: contract}, nil
+}
+
+// bindNamespaceMerkleTree binds a generic wrapper to an already deployed contract.
+func bindNamespaceMerkleTree(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(NamespaceMerkleTreeABI))
+	if err != nil {
+		return nil, err
+	}
+	return bind.NewBoundContract(address, parsed, caller, transactor, filterer), nil
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_NamespaceMerkleTree *NamespaceMerkleTreeRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _NamespaceMerkleTree.Contract.NamespaceMerkleTreeCaller.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_NamespaceMerkleTree *NamespaceMerkleTreeRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _NamespaceMerkleTree.Contract.NamespaceMerkleTreeTransactor.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_NamespaceMerkleTree *NamespaceMerkleTreeRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _NamespaceMerkleTree.Contract.NamespaceMerkleTreeTransactor.contract.Transact(opts, method, params...)
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_NamespaceMerkleTree *NamespaceMerkleTreeCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _NamespaceMerkleTree.Contract.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_NamespaceMerkleTree *NamespaceMerkleTreeTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _NamespaceMerkleTree.Contract.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_NamespaceMerkleTree *NamespaceMerkleTreeTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _NamespaceMerkleTree.Contract.contract.Transact(opts, method, params...)
+}
+
+// Verify is a free data retrieval call binding the contract method 0xfba69670.
+//
+// Solidity: function verify((bytes8,bytes8,bytes32) root, ((bytes8,bytes8,bytes32)[],uint256,uint256) proof, bytes8 minmaxNID, bytes data) pure returns(bool)
+func (_NamespaceMerkleTree *NamespaceMerkleTreeCaller) Verify(opts *bind.CallOpts, root NamespaceNode, proof NamespaceMerkleProof, minmaxNID [8]byte, data []byte) (bool, error) {
+	var out []interface{}
+	err := _NamespaceMerkleTree.contract.Call(opts, &out, "verify", root, proof, minmaxNID, data)
+
+	if err != nil {
+		return *new(bool), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
+
+	return out0, err
+
+}
+
+// Verify is a free data retrieval call binding the contract method 0xfba69670.
+//
+// Solidity: function verify((bytes8,bytes8,bytes32) root, ((bytes8,bytes8,bytes32)[],uint256,uint256) proof, bytes8 minmaxNID, bytes data) pure returns(bool)
+func (_NamespaceMerkleTree *NamespaceMerkleTreeSession) Verify(root NamespaceNode, proof NamespaceMerkleProof, minmaxNID [8]byte, data []byte) (bool, error) {
+	return _NamespaceMerkleTree.Contract.Verify(&_NamespaceMerkleTree.CallOpts, root, proof, minmaxNID, data)
+}
+
+// Verify is a free data retrieval call binding the contract method 0xfba69670.
+//
+// Solidity: function verify((bytes8,bytes8,bytes32) root, ((bytes8,bytes8,bytes32)[],uint256,uint256) proof, bytes8 minmaxNID, bytes data) pure returns(bool)
+func (_NamespaceMerkleTree *NamespaceMerkleTreeCallerSession) Verify(root NamespaceNode, proof NamespaceMerkleProof, minmaxNID [8]byte, data []byte) (bool, error) {
+	return _NamespaceMerkleTree.Contract.Verify(&_NamespaceMerkleTree.CallOpts, root, proof, minmaxNID, data)
 }
 
 // QuantumGravityBridgeMetaData contains all meta data concerning the QuantumGravityBridge contract.
 var QuantumGravityBridgeMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_bridge_id\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"_nonce\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_powerThreshold\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"_validatorSetHash\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"InsufficientVotingPower\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidDataRootTupleRootNonce\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidSignature\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidValidatorSetNonce\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"MalformedCurrentValidatorSet\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"SuppliedValidatorSetInvalid\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"dataRootTupleRoot\",\"type\":\"bytes32\"}],\"name\":\"DataRootTupleRootEvent\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"powerThreshold\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"validatorSetHash\",\"type\":\"bytes32\"}],\"name\":\"ValidatorSetUpdatedEvent\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"BRIDGE_ID\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"state_dataRootTupleRoots\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"state_eventNonce\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"state_lastValidatorSetCheckpoint\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"state_powerThreshold\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_newNonce\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_validatorSetNonce\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"_dataRootTupleRoot\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"power\",\"type\":\"uint256\"}],\"internalType\":\"structValidator[]\",\"name\":\"_currentValidatorSet\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"uint8\",\"name\":\"v\",\"type\":\"uint8\"},{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"s\",\"type\":\"bytes32\"}],\"internalType\":\"structSignature[]\",\"name\":\"_sigs\",\"type\":\"tuple[]\"}],\"name\":\"submitDataRootTupleRoot\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_newNonce\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_oldNonce\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_newPowerThreshold\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"_newValidatorSetHash\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"power\",\"type\":\"uint256\"}],\"internalType\":\"structValidator[]\",\"name\":\"_currentValidatorSet\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"uint8\",\"name\":\"v\",\"type\":\"uint8\"},{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"s\",\"type\":\"bytes32\"}],\"internalType\":\"structSignature[]\",\"name\":\"_sigs\",\"type\":\"tuple[]\"}],\"name\":\"updateValidatorSet\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tupleRootNonce\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"height\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"dataRoot\",\"type\":\"bytes32\"}],\"internalType\":\"structDataRootTuple\",\"name\":\"_tuple\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"bytes32[]\",\"name\":\"sideNodes\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint256\",\"name\":\"key\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"numLeaves\",\"type\":\"uint256\"}],\"internalType\":\"structBinaryMerkleProof\",\"name\":\"_proof\",\"type\":\"tuple\"}],\"name\":\"verifyAttestation\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_bridge_id\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"_nonce\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_powerThreshold\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"_validatorSetHash\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"InsufficientVotingPower\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidDataRootTupleRootNonce\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidSignature\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidValidatorSetNonce\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"MalformedCurrentValidatorSet\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"SuppliedValidatorSetInvalid\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"dataRootTupleRoot\",\"type\":\"bytes32\"}],\"name\":\"DataRootTupleRootEvent\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"powerThreshold\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"validatorSetHash\",\"type\":\"bytes32\"}],\"name\":\"ValidatorSetUpdatedEvent\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"BRIDGE_ID\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"state_dataRootTupleRoots\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"state_eventNonce\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"state_lastValidatorSetCheckpoint\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"state_powerThreshold\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_newNonce\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_validatorSetNonce\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"_dataRootTupleRoot\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"power\",\"type\":\"uint256\"}],\"internalType\":\"structValidator[]\",\"name\":\"_currentValidatorSet\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"uint8\",\"name\":\"v\",\"type\":\"uint8\"},{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"s\",\"type\":\"bytes32\"}],\"internalType\":\"structSignature[]\",\"name\":\"_sigs\",\"type\":\"tuple[]\"}],\"name\":\"submitDataRootTupleRoot\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_newNonce\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_oldNonce\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_newPowerThreshold\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"_newValidatorSetHash\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"power\",\"type\":\"uint256\"}],\"internalType\":\"structValidator[]\",\"name\":\"_currentValidatorSet\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"uint8\",\"name\":\"v\",\"type\":\"uint8\"},{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"s\",\"type\":\"bytes32\"}],\"internalType\":\"structSignature[]\",\"name\":\"_sigs\",\"type\":\"tuple[]\"}],\"name\":\"updateValidatorSet\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tupleRootNonce\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"height\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"dataRoot\",\"type\":\"bytes32\"}],\"internalType\":\"structDataRootTuple\",\"name\":\"_tuple\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"bytes32[]\",\"name\":\"sideNodes\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint256\",\"name\":\"key\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"numLeaves\",\"type\":\"uint256\"}],\"internalType\":\"structBinaryMerkleProof\",\"name\":\"_proof\",\"type\":\"tuple\"}],\"name\":\"verifyAttestation\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes8\",\"name\":\"min\",\"type\":\"bytes8\"},{\"internalType\":\"bytes8\",\"name\":\"max\",\"type\":\"bytes8\"},{\"internalType\":\"bytes32\",\"name\":\"digest\",\"type\":\"bytes32\"}],\"internalType\":\"structNamespaceNode[]\",\"name\":\"_namespacedRowRoots\",\"type\":\"tuple[]\"},{\"internalType\":\"bytes[]\",\"name\":\"_sharesSets\",\"type\":\"bytes[]\"},{\"components\":[{\"components\":[{\"internalType\":\"bytes8\",\"name\":\"min\",\"type\":\"bytes8\"},{\"internalType\":\"bytes8\",\"name\":\"max\",\"type\":\"bytes8\"},{\"internalType\":\"bytes32\",\"name\":\"digest\",\"type\":\"bytes32\"}],\"internalType\":\"structNamespaceNode[]\",\"name\":\"sideNodes\",\"type\":\"tuple[]\"},{\"internalType\":\"uint256\",\"name\":\"key\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"numLeaves\",\"type\":\"uint256\"}],\"internalType\":\"structNamespaceMerkleProof[]\",\"name\":\"_sharesSetsProofs\",\"type\":\"tuple[]\"},{\"internalType\":\"bytes8\",\"name\":\"_namespaceID\",\"type\":\"bytes8\"},{\"components\":[{\"internalType\":\"bytes32[]\",\"name\":\"sideNodes\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint256\",\"name\":\"key\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"numLeaves\",\"type\":\"uint256\"}],\"internalType\":\"structBinaryMerkleProof[]\",\"name\":\"_rowsProofs\",\"type\":\"tuple[]\"},{\"internalType\":\"bytes[]\",\"name\":\"_rowRoots\",\"type\":\"bytes[]\"},{\"internalType\":\"uint256\",\"name\":\"_tupleRootNonce\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"height\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"dataRoot\",\"type\":\"bytes32\"}],\"internalType\":\"structDataRootTuple\",\"name\":\"_tuple\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"bytes32[]\",\"name\":\"sideNodes\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint256\",\"name\":\"key\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"numLeaves\",\"type\":\"uint256\"}],\"internalType\":\"structBinaryMerkleProof\",\"name\":\"_dataRootProof\",\"type\":\"tuple\"}],\"name\":\"verifySharesInclusion\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
 	Sigs: map[string]string{
 		"af4482af": "BRIDGE_ID()",
 		"817f985b": "state_dataRootTupleRoots(uint256)",
@@ -774,8 +999,9 @@ var QuantumGravityBridgeMetaData = &bind.MetaData{
 		"e23eb326": "submitDataRootTupleRoot(uint256,uint256,bytes32,(address,uint256)[],(uint8,bytes32,bytes32)[])",
 		"05d85c13": "updateValidatorSet(uint256,uint256,uint256,bytes32,(address,uint256)[],(uint8,bytes32,bytes32)[])",
 		"1f3302a9": "verifyAttestation(uint256,(uint256,bytes32),(bytes32[],uint256,uint256))",
+		"a93527b3": "verifySharesInclusion((bytes8,bytes8,bytes32)[],bytes[],((bytes8,bytes8,bytes32)[],uint256,uint256)[],bytes8,(bytes32[],uint256,uint256)[],bytes[],uint256,(uint256,bytes32),(bytes32[],uint256,uint256))",
 	},
-	Bin: "0x60a060405234801561001057600080fd5b506040516114b13803806114b183398101604081905261002f916100d3565b60808481526040805160208082018890526918da1958dadc1bda5b9d60b21b828401526060820187905292810185905260a08082018590528251808303909101815260c08201808452815191909401206002879055600081905560018690559285905260e08101849052905185917fe55fb3cbbfe29b13c7f8a35ef23127e7df9ab88df16bac166ad254a20f02414c91908190036101000190a25050505050610109565b600080600080608085870312156100e957600080fd5b505082516020840151604085015160609095015191969095509092509050565b60805161137161014060003960008181610106015281816101b5015281816102010152818161035a01526103a501526113716000f3fe608060405234801561001057600080fd5b50600436106100885760003560e01c8063af4482af1161005b578063af4482af14610101578063cdade86614610128578063e23eb32614610131578063e5a2b5d21461014457600080fd5b806305d85c131461008d5780631f3302a9146100a25780635433218c146100ca578063817f985b146100e1575b600080fd5b6100a061009b366004610e4a565b61014d565b005b6100b56100b0366004610f73565b610290565b60405190151581526020015b60405180910390f35b6100d360005481565b6040519081526020016100c1565b6100d36100ef366004611095565b60036020526000908152604090205481565b6100d37f000000000000000000000000000000000000000000000000000000000000000081565b6100d360025481565b6100a061013f3660046110ae565b6102f2565b6100d360015481565b6002546001805490610160908390611151565b8a1461017f576040516368a35ffd60e11b815260040160405180910390fd5b84831461019f5760405163c6617b7b60e01b815260040160405180910390fd5b60006101ab8787610478565b90506000546101dc7f00000000000000000000000000000000000000000000000000000000000000008c85856104ac565b146101fa57604051630bbdaec960e11b815260040160405180910390fd5b60006102287f00000000000000000000000000000000000000000000000000000000000000008d8c8c6104ac565b90506102388888888885886104fd565b600081905560018a905560028c9055604080518b8152602081018b90528d917fe55fb3cbbfe29b13c7f8a35ef23127e7df9ab88df16bac166ad254a20f02414c910160405180910390a2505050505050505050505050565b60006002548411156102a4575060006102eb565b60008481526003602090815260408083205481518751818501529287015183830152815180840383018152606090930190915291906102e69083908690610602565b925050505b9392505050565b6002546001805490610305908390611151565b89146103245760405163e869766d60e01b815260040160405180910390fd5b8483146103445760405163c6617b7b60e01b815260040160405180910390fd5b60006103508787610478565b90506000546103817f00000000000000000000000000000000000000000000000000000000000000008b85856104ac565b1461039f57604051630bbdaec960e11b815260040160405180910390fd5b604080517f00000000000000000000000000000000000000000000000000000000000000006020808301919091526f0e8e4c2dce6c2c6e8d2dedc84c2e8c6d60831b82840152606082018d905260808083018c90528351808403909101815260a090920190925280519101206104198888888885886104fd565b60028b905560008b815260036020526040908190208a9055518b907f6614d037bde4905e31ca5ff05de61964c267f28b0320ed49e59f7d99752e1c4f90610463908c815260200190565b60405180910390a25050505050505050505050565b6000828260405160200161048d929190611185565b6040516020818303038152906040528051906020012090505b92915050565b604080516020808201969096526918da1958dadc1bda5b9d60b21b818301526060810194909452608084019290925260a0808401919091528151808403909101815260c09092019052805191012090565b6000805b868110156105d75761052986868381811061051e5761051e6111dc565b905060600201610872565b6105c557610576888883818110610542576105426111dc565b61055892602060409092020190810191506111f2565b8588888581811061056b5761056b6111dc565b9050606002016108a6565b61059357604051638baa579f60e01b815260040160405180910390fd5b8787828181106105a5576105a56111dc565b90506040020160200135826105ba9190611151565b9150828210156105d7575b806105cf8161120d565b915050610501565b50818110156105f95760405163cabeb65560e01b815260040160405180910390fd5b50505050505050565b600060018360400151116106255782515115610620575060006102eb565b610647565b61063783602001518460400151610940565b83515114610647575060006102eb565b826040015183602001511061065e575060006102eb565b6000610669836109c6565b84515190915060000361069557836040015160010361068b57841490506102eb565b60009150506102eb565b60208401516001905b60208601516000906001841b906106b6908290611226565b6106c09190611248565b9050600060016106d281861b84611151565b6106dc9190611267565b9050876040015181106106f05750506107b6565b9150816106fe600185611267565b88515111610714576000955050505050506102eb565b61071f600185611267565b6001901b8289602001516107339190611267565b101561077057875161076990869061074c600188611267565b8151811061075c5761075c6111dc565b6020026020010151610a3b565b94506107a2565b875161079f90610781600187611267565b81518110610791576107916111dc565b602002602001015186610a3b565b94505b6107ad600185611151565b9350505061069e565b600186604001516107c79190611267565b811461080f576107d8600183611267565b865151116107ec57600093505050506102eb565b85516107ff90849061074c600186611267565b925061080c600183611151565b91505b85515161081d600184611267565b101561086657855161085290610834600185611267565b81518110610844576108446111dc565b602002602001015184610a3b565b925061085f600183611151565b915061080f565b50509093149392505050565b6000602082013515801561088857506040820135155b80156104a6575061089c602083018361127e565b60ff161592915050565b600080610900846040517f19457468657265756d205369676e6564204d6573736167653a0a3332000000006020820152603c8101829052600090605c01604051602081830303815290604052805190602001209050919050565b905061092281610913602086018661127e565b85602001358660400135610ab9565b6001600160a01b0316856001600160a01b0316149150509392505050565b600061094b82610ae1565b61095790610100611267565b90506000610966600183611267565b6001901b90506001816109799190611267565b841161098557506104a6565b806001036109975760019150506104a6565b6109b36109a48286611267565b6109ae8386611267565b610940565b6109be906001611151565b9150506104a6565b60006002600060f81b836040516020016109e19291906112dc565b60408051601f19818403018152908290526109fb91611300565b602060405180830381855afa158015610a18573d6000803e3d6000fd5b5050506040513d601f19601f820116820180604052508101906104a6919061130c565b604051600160f81b6020820152602181018390526041810182905260009060029060610160408051601f1981840301815290829052610a7991611300565b602060405180830381855afa158015610a96573d6000803e3d6000fd5b5050506040513d601f19601f820116820180604052508101906102eb919061130c565b6000806000610aca87878787610b0e565b91509150610ad781610bfb565b5095945050505050565b60005b81816001901b1015610b0257610afb600182611151565b9050610ae4565b6104a681610100611267565b6000807f7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46681b20a0831115610b455750600090506003610bf2565b8460ff16601b14158015610b5d57508460ff16601c14155b15610b6e5750600090506004610bf2565b6040805160008082526020820180845289905260ff881692820192909252606081018690526080810185905260019060a0016020604051602081039080840390855afa158015610bc2573d6000803e3d6000fd5b5050604051601f1901519150506001600160a01b038116610beb57600060019250925050610bf2565b9150600090505b94509492505050565b6000816004811115610c0f57610c0f611325565b03610c175750565b6001816004811115610c2b57610c2b611325565b03610c7d5760405162461bcd60e51b815260206004820152601860248201527f45434453413a20696e76616c6964207369676e6174757265000000000000000060448201526064015b60405180910390fd5b6002816004811115610c9157610c91611325565b03610cde5760405162461bcd60e51b815260206004820152601f60248201527f45434453413a20696e76616c6964207369676e6174757265206c656e677468006044820152606401610c74565b6003816004811115610cf257610cf2611325565b03610d4a5760405162461bcd60e51b815260206004820152602260248201527f45434453413a20696e76616c6964207369676e6174757265202773272076616c604482015261756560f01b6064820152608401610c74565b6004816004811115610d5e57610d5e611325565b03610db65760405162461bcd60e51b815260206004820152602260248201527f45434453413a20696e76616c6964207369676e6174757265202776272076616c604482015261756560f01b6064820152608401610c74565b50565b60008083601f840112610dcb57600080fd5b50813567ffffffffffffffff811115610de357600080fd5b6020830191508360208260061b8501011115610dfe57600080fd5b9250929050565b60008083601f840112610e1757600080fd5b50813567ffffffffffffffff811115610e2f57600080fd5b602083019150836020606083028501011115610dfe57600080fd5b60008060008060008060008060c0898b031215610e6657600080fd5b88359750602089013596506040890135955060608901359450608089013567ffffffffffffffff80821115610e9a57600080fd5b610ea68c838d01610db9565b909650945060a08b0135915080821115610ebf57600080fd5b50610ecc8b828c01610e05565b999c989b5096995094979396929594505050565b634e487b7160e01b600052604160045260246000fd5b6040805190810167ffffffffffffffff81118282101715610f1957610f19610ee0565b60405290565b6040516060810167ffffffffffffffff81118282101715610f1957610f19610ee0565b604051601f8201601f1916810167ffffffffffffffff81118282101715610f6b57610f6b610ee0565b604052919050565b60008060008385036080811215610f8957600080fd5b8435935060206040601f1983011215610fa157600080fd5b610fa9610ef6565b86820135815260408701358282015293506060860135915067ffffffffffffffff80831115610fd757600080fd5b9186019160608389031215610feb57600080fd5b610ff3610f1f565b83358281111561100257600080fd5b8401601f81018a1361101357600080fd5b80358381111561102557611025610ee0565b8060051b9350611036858501610f42565b818152938201850193858101908c86111561105057600080fd5b928601925b8584101561106e57833582529286019290860190611055565b80855250505050828401358382015260408401356040820152809450505050509250925092565b6000602082840312156110a757600080fd5b5035919050565b600080600080600080600060a0888a0312156110c957600080fd5b873596506020880135955060408801359450606088013567ffffffffffffffff808211156110f657600080fd5b6111028b838c01610db9565b909650945060808a013591508082111561111b57600080fd5b506111288a828b01610e05565b989b979a50959850939692959293505050565b634e487b7160e01b600052601160045260246000fd5b600082198211156111645761116461113b565b500190565b80356001600160a01b038116811461118057600080fd5b919050565b6020808252818101839052600090604080840186845b878110156111cf576001600160a01b036111b483611169565b1683528185013585840152918301919083019060010161119b565b5090979650505050505050565b634e487b7160e01b600052603260045260246000fd5b60006020828403121561120457600080fd5b6102eb82611169565b60006001820161121f5761121f61113b565b5060010190565b60008261124357634e487b7160e01b600052601260045260246000fd5b500490565b60008160001904831182151516156112625761126261113b565b500290565b6000828210156112795761127961113b565b500390565b60006020828403121561129057600080fd5b813560ff811681146102eb57600080fd5b6000815160005b818110156112c257602081850181015186830152016112a8565b818111156112d1576000828601525b509290920192915050565b6001600160f81b03198316815260006112f860018301846112a1565b949350505050565b60006102eb82846112a1565b60006020828403121561131e57600080fd5b5051919050565b634e487b7160e01b600052602160045260246000fdfea26469706673582212206b5e3778a6da95f3d627cf5858fcfafa79b96f5be45d6da09d72de8cc305265864736f6c634300080f0033",
+	Bin: "0x60a060405234801561001057600080fd5b50604051611c70380380611c7083398101604081905261002f916100d3565b60808481526040805160208082018890526918da1958dadc1bda5b9d60b21b828401526060820187905292810185905260a08082018590528251808303909101815260c08201808452815191909401206002879055600081905560018690559285905260e08101849052905185917fe55fb3cbbfe29b13c7f8a35ef23127e7df9ab88df16bac166ad254a20f02414c91908190036101000190a25050505050610109565b600080600080608085870312156100e957600080fd5b505082516020840151604085015160609095015191969095509092509050565b608051611b3061014060003960008181610124015281816101d30152818161021f0152818161056f01526105ba0152611b306000f3fe608060405234801561001057600080fd5b50600436106100935760003560e01c8063a93527b311610066578063a93527b31461010c578063af4482af1461011f578063cdade86614610146578063e23eb3261461014f578063e5a2b5d21461016257600080fd5b806305d85c13146100985780631f3302a9146100ad5780635433218c146100d5578063817f985b146100ec575b600080fd5b6100ab6100a636600461106a565b61016b565b005b6100c06100bb366004611293565b6102ae565b60405190151581526020015b60405180910390f35b6100de60005481565b6040519081526020016100cc565b6100de6100fa3660046112ea565b60036020526000908152604090205481565b6100c061011a3660046115f9565b610310565b6100de7f000000000000000000000000000000000000000000000000000000000000000081565b6100de60025481565b6100ab61015d36600461171b565b610507565b6100de60015481565b600254600180549061017e9083906117bd565b8a1461019d576040516368a35ffd60e11b815260040160405180910390fd5b8483146101bd5760405163c6617b7b60e01b815260040160405180910390fd5b60006101c9878761068d565b90506000546101fa7f00000000000000000000000000000000000000000000000000000000000000008c85856106c1565b1461021857604051630bbdaec960e11b815260040160405180910390fd5b60006102467f00000000000000000000000000000000000000000000000000000000000000008d8c8c6106c1565b9050610256888888888588610712565b600081905560018a905560028c9055604080518b8152602081018b90528d917fe55fb3cbbfe29b13c7f8a35ef23127e7df9ab88df16bac166ad254a20f02414c910160405180910390a2505050505050505050505050565b60006002548411156102c257506000610309565b60008481526003602090815260408083205481518751818501529287015183830152815180840383018152606090930190915291906103049083908690610820565b925050505b9392505050565b60008951865114610323575060006104fa565b8951885114610334575060006104fa565b8951855114610345575060006104fa565b6000805b89518163ffffffff1610156104665773__$549b49878917c9869da759c74e6164f91f$__63e8c25a158d8363ffffffff168151811061038a5761038a6117d5565b60200260200101518c8463ffffffff16815181106103aa576103aa6117d5565b60200260200101518c8f8663ffffffff16815181106103cb576103cb6117d5565b60200260200101516040518563ffffffff1660e01b81526004016103f29493929190611847565b60206040518083038186803b15801561040a57600080fd5b505af415801561041e573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906104429190611926565b915081610454576000925050506104fa565b8061045e81611948565b915050610349565b5060005b87518163ffffffff1610156104ea576104c68560200151898363ffffffff1681518110610499576104996117d5565b6020026020010151898463ffffffff16815181106104b9576104b96117d5565b6020026020010151610820565b9150816104d8576000925050506104fa565b806104e281611948565b91505061046a565b506104f68585856102ae565b9150505b9998505050505050505050565b600254600180549061051a9083906117bd565b89146105395760405163e869766d60e01b815260040160405180910390fd5b8483146105595760405163c6617b7b60e01b815260040160405180910390fd5b6000610565878761068d565b90506000546105967f00000000000000000000000000000000000000000000000000000000000000008b85856106c1565b146105b457604051630bbdaec960e11b815260040160405180910390fd5b604080517f00000000000000000000000000000000000000000000000000000000000000006020808301919091526f0e8e4c2dce6c2c6e8d2dedc84c2e8c6d60831b82840152606082018d905260808083018c90528351808403909101815260a0909201909252805191012061062e888888888588610712565b60028b905560008b815260036020526040908190208a9055518b907f6614d037bde4905e31ca5ff05de61964c267f28b0320ed49e59f7d99752e1c4f90610678908c815260200190565b60405180910390a25050505050505050505050565b600082826040516020016106a2929190611983565b6040516020818303038152906040528051906020012090505b92915050565b604080516020808201969096526918da1958dadc1bda5b9d60b21b818301526060810194909452608084019290925260a0808401919091528151808403909101815260c09092019052805191012090565b6000805b868110156107f55761073e868683818110610733576107336117d5565b905060600201610a8e565b15610748576107e3565b61079188888381811061075d5761075d6117d5565b61077392602060409092020190810191506119cd565b85888885818110610786576107866117d5565b905060600201610ac2565b6107ae57604051638baa579f60e01b815260040160405180910390fd5b8787828181106107c0576107c06117d5565b90506040020160200135826107d591906117bd565b91508282106107e3576107f5565b806107ed816119e8565b915050610716565b50818110156108175760405163cabeb65560e01b815260040160405180910390fd5b50505050505050565b60006001836040015111610843578251511561083e57506000610309565b610865565b61085583602001518460400151610b5c565b8351511461086557506000610309565b826040015183602001511061087c57506000610309565b600061088783610be3565b8451519091506108b1578360400151600114156108a75784149050610309565b6000915050610309565b60208401516001905b60208601516000906001841b906108d2908290611a03565b6108dc9190611a25565b9050600060016108ee81861b846117bd565b6108f89190611a44565b90508760400151811061090c5750506109d2565b91508161091a600185611a44565b8851511161093057600095505050505050610309565b61093b600185611a44565b6001901b82896020015161094f9190611a44565b101561098c578751610985908690610968600188611a44565b81518110610978576109786117d5565b6020026020010151610c58565b94506109be565b87516109bb9061099d600187611a44565b815181106109ad576109ad6117d5565b602002602001015186610c58565b94505b6109c96001856117bd565b935050506108ba565b600186604001516109e39190611a44565b8114610a2b576109f4600183611a44565b86515111610a085760009350505050610309565b8551610a1b908490610968600186611a44565b9250610a286001836117bd565b91505b855151610a39600184611a44565b1015610a82578551610a6e90610a50600185611a44565b81518110610a6057610a606117d5565b602002602001015184610c58565b9250610a7b6001836117bd565b9150610a2b565b50509093149392505050565b60006020820135158015610aa457506040820135155b80156106bb5750610ab86020830183611a5b565b60ff161592915050565b600080610b1c846040517f19457468657265756d205369676e6564204d6573736167653a0a3332000000006020820152603c8101829052600090605c01604051602081830303815290604052805190602001209050919050565b9050610b3e81610b2f6020860186611a5b565b85602001358660400135610cd6565b6001600160a01b0316856001600160a01b0316149150509392505050565b6000610b6782610cfe565b610b7390610100611a44565b90506000610b82600183611a44565b6001901b9050600181610b959190611a44565b8411610ba157506106bb565b8060011415610bb45760019150506106bb565b610bd0610bc18286611a44565b610bcb8386611a44565b610b5c565b610bdb9060016117bd565b9150506106bb565b60006002600060f81b83604051602001610bfe929190611a7e565b60408051601f1981840301815290829052610c1891611aaf565b602060405180830381855afa158015610c35573d6000803e3d6000fd5b5050506040513d601f19601f820116820180604052508101906106bb9190611acb565b604051600160f81b6020820152602181018390526041810182905260009060029060610160408051601f1981840301815290829052610c9691611aaf565b602060405180830381855afa158015610cb3573d6000803e3d6000fd5b5050506040513d601f19601f820116820180604052508101906103099190611acb565b6000806000610ce787878787610d2b565b91509150610cf481610e18565b5095945050505050565b60005b81816001901b1015610d1f57610d186001826117bd565b9050610d01565b6106bb81610100611a44565b6000807f7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46681b20a0831115610d625750600090506003610e0f565b8460ff16601b14158015610d7a57508460ff16601c14155b15610d8b5750600090506004610e0f565b6040805160008082526020820180845289905260ff881692820192909252606081018690526080810185905260019060a0016020604051602081039080840390855afa158015610ddf573d6000803e3d6000fd5b5050604051601f1901519150506001600160a01b038116610e0857600060019250925050610e0f565b9150600090505b94509492505050565b6000816004811115610e2c57610e2c611ae4565b1415610e355750565b6001816004811115610e4957610e49611ae4565b1415610e9c5760405162461bcd60e51b815260206004820152601860248201527f45434453413a20696e76616c6964207369676e6174757265000000000000000060448201526064015b60405180910390fd5b6002816004811115610eb057610eb0611ae4565b1415610efe5760405162461bcd60e51b815260206004820152601f60248201527f45434453413a20696e76616c6964207369676e6174757265206c656e677468006044820152606401610e93565b6003816004811115610f1257610f12611ae4565b1415610f6b5760405162461bcd60e51b815260206004820152602260248201527f45434453413a20696e76616c6964207369676e6174757265202773272076616c604482015261756560f01b6064820152608401610e93565b6004816004811115610f7f57610f7f611ae4565b1415610fd85760405162461bcd60e51b815260206004820152602260248201527f45434453413a20696e76616c6964207369676e6174757265202776272076616c604482015261756560f01b6064820152608401610e93565b50565b60008083601f840112610fed57600080fd5b5081356001600160401b0381111561100457600080fd5b6020830191508360208260061b850101111561101f57600080fd5b9250929050565b60008083601f84011261103857600080fd5b5081356001600160401b0381111561104f57600080fd5b60208301915083602060608302850101111561101f57600080fd5b60008060008060008060008060c0898b03121561108657600080fd5b8835975060208901359650604089013595506060890135945060808901356001600160401b03808211156110b957600080fd5b6110c58c838d01610fdb565b909650945060a08b01359150808211156110de57600080fd5b506110eb8b828c01611026565b999c989b5096995094979396929594505050565b634e487b7160e01b600052604160045260246000fd5b604051606081016001600160401b0381118282101715611137576111376110ff565b60405290565b604051601f8201601f191681016001600160401b0381118282101715611165576111656110ff565b604052919050565b60006040828403121561117f57600080fd5b604051604081018181106001600160401b03821117156111a1576111a16110ff565b604052823581526020928301359281019290925250919050565b60006001600160401b038211156111d4576111d46110ff565b5060051b60200190565b6000606082840312156111f057600080fd5b6111f8611115565b905081356001600160401b0381111561121057600080fd5b8201601f8101841361122157600080fd5b80356020611236611231836111bb565b61113d565b82815260059290921b8301810191818101908784111561125557600080fd5b938201935b838510156112735784358252938201939082019061125a565b808652505080850135818501525050506040820135604082015292915050565b6000806000608084860312156112a857600080fd5b833592506112b9856020860161116d565b915060608401356001600160401b038111156112d457600080fd5b6112e0868287016111de565b9150509250925092565b6000602082840312156112fc57600080fd5b5035919050565b80356001600160c01b03198116811461131b57600080fd5b919050565b600082601f83011261133157600080fd5b81356020611341611231836111bb565b8281526060928302850182019282820191908785111561136057600080fd5b8387015b858110156113b55781818a03121561137c5760008081fd5b611384611115565b61138d82611303565b815261139a868301611303565b81870152604082810135908201528452928401928101611364565b5090979650505050505050565b6000601f83818401126113d457600080fd5b823560206113e4611231836111bb565b82815260059290921b8501810191818101908784111561140357600080fd5b8287015b848110156114995780356001600160401b03808211156114275760008081fd5b818a0191508a603f83011261143c5760008081fd5b85820135604082821115611452576114526110ff565b611463828b01601f1916890161113d565b92508183528c8183860101111561147a5760008081fd5b8181850189850137506000908201870152845250918301918301611407565b50979650505050505050565b600082601f8301126114b657600080fd5b813560206114c6611231836111bb565b82815260059290921b840181019181810190868411156114e557600080fd5b8286015b8481101561156f5780356001600160401b03808211156115095760008081fd5b908801906060828b03601f19018113156115235760008081fd5b61152b611115565b878401358381111561153d5760008081fd5b61154b8d8a83880101611320565b825250604084810135898301529190930135908301525083529183019183016114e9565b509695505050505050565b600082601f83011261158b57600080fd5b8135602061159b611231836111bb565b82815260059290921b840181019181810190868411156115ba57600080fd5b8286015b8481101561156f5780356001600160401b038111156115dd5760008081fd5b6115eb8986838b01016111de565b8452509183019183016115be565b60008060008060008060008060006101408a8c03121561161857600080fd5b89356001600160401b038082111561162f57600080fd5b61163b8d838e01611320565b9a5060208c013591508082111561165157600080fd5b61165d8d838e016113c2565b995060408c013591508082111561167357600080fd5b61167f8d838e016114a5565b985061168d60608d01611303565b975060808c01359150808211156116a357600080fd5b6116af8d838e0161157a565b965060a08c01359150808211156116c557600080fd5b6116d18d838e016113c2565b955060c08c013594506116e78d60e08e0161116d565b93506101208c01359150808211156116fe57600080fd5b5061170b8c828d016111de565b9150509295985092959850929598565b600080600080600080600060a0888a03121561173657600080fd5b87359650602088013595506040880135945060608801356001600160401b038082111561176257600080fd5b61176e8b838c01610fdb565b909650945060808a013591508082111561178757600080fd5b506117948a828b01611026565b989b979a50959850939692959293505050565b634e487b7160e01b600052601160045260246000fd5b600082198211156117d0576117d06117a7565b500190565b634e487b7160e01b600052603260045260246000fd5b60005b838110156118065781810151838201526020016117ee565b83811115611815576000848401525b50505050565b600081518084526118338160208601602086016117eb565b601f01601f19169290920160200192915050565b84516001600160c01b03199081168252602080870151909116818301526040808701519083015260c060608084018290528651918401819052815161012085018190526000939192820190610140860190855b818110156118e0576118d083855180516001600160c01b0319908116835260208083015190911690830152604090810151910152565b928401929185019160010161189a565b50508883015160e087015260408901516101008701526001600160c01b03198816608087015285810360a0870152611918818861181b565b9a9950505050505050505050565b60006020828403121561193857600080fd5b8151801515811461030957600080fd5b600063ffffffff80831681811415611962576119626117a7565b6001019392505050565b80356001600160a01b038116811461131b57600080fd5b6020808252818101839052600090604080840186845b878110156113b5576001600160a01b036119b28361196c565b16835281850135858401529183019190830190600101611999565b6000602082840312156119df57600080fd5b6103098261196c565b60006000198214156119fc576119fc6117a7565b5060010190565b600082611a2057634e487b7160e01b600052601260045260246000fd5b500490565b6000816000190483118215151615611a3f57611a3f6117a7565b500290565b600082821015611a5657611a566117a7565b500390565b600060208284031215611a6d57600080fd5b813560ff8116811461030957600080fd5b6001600160f81b0319831681528151600090611aa18160018501602087016117eb565b919091016001019392505050565b60008251611ac18184602087016117eb565b9190910192915050565b600060208284031215611add57600080fd5b5051919050565b634e487b7160e01b600052602160045260246000fdfea26469706673582212204175166c54e4999bf071dee2dcd812a81d5f2d194cc228e9d1b033e4084d5aae64736f6c63430008090033",
 }
 
 // QuantumGravityBridgeABI is the input ABI used to generate the binding from.
@@ -799,6 +1025,9 @@ func DeployQuantumGravityBridge(auth *bind.TransactOpts, backend bind.ContractBa
 	if parsed == nil {
 		return common.Address{}, nil, nil, errors.New("GetABI returned nil")
 	}
+
+	namespaceMerkleTreeAddr, _, _, _ := DeployNamespaceMerkleTree(auth, backend)
+	QuantumGravityBridgeBin = strings.Replace(QuantumGravityBridgeBin, "__$549b49878917c9869da759c74e6164f91f$__", namespaceMerkleTreeAddr.String()[2:], -1)
 
 	address, tx, contract, err := bind.DeployContract(auth, *parsed, common.FromHex(QuantumGravityBridgeBin), backend, _bridge_id, _nonce, _powerThreshold, _validatorSetHash)
 	if err != nil {
@@ -1133,6 +1362,37 @@ func (_QuantumGravityBridge *QuantumGravityBridgeSession) VerifyAttestation(_tup
 // Solidity: function verifyAttestation(uint256 _tupleRootNonce, (uint256,bytes32) _tuple, (bytes32[],uint256,uint256) _proof) view returns(bool)
 func (_QuantumGravityBridge *QuantumGravityBridgeCallerSession) VerifyAttestation(_tupleRootNonce *big.Int, _tuple DataRootTuple, _proof BinaryMerkleProof) (bool, error) {
 	return _QuantumGravityBridge.Contract.VerifyAttestation(&_QuantumGravityBridge.CallOpts, _tupleRootNonce, _tuple, _proof)
+}
+
+// VerifySharesInclusion is a free data retrieval call binding the contract method 0xa93527b3.
+//
+// Solidity: function verifySharesInclusion((bytes8,bytes8,bytes32)[] _namespacedRowRoots, bytes[] _sharesSets, ((bytes8,bytes8,bytes32)[],uint256,uint256)[] _sharesSetsProofs, bytes8 _namespaceID, (bytes32[],uint256,uint256)[] _rowsProofs, bytes[] _rowRoots, uint256 _tupleRootNonce, (uint256,bytes32) _tuple, (bytes32[],uint256,uint256) _dataRootProof) view returns(bool)
+func (_QuantumGravityBridge *QuantumGravityBridgeCaller) VerifySharesInclusion(opts *bind.CallOpts, _namespacedRowRoots []NamespaceNode, _sharesSets [][]byte, _sharesSetsProofs []NamespaceMerkleProof, _namespaceID [8]byte, _rowsProofs []BinaryMerkleProof, _rowRoots [][]byte, _tupleRootNonce *big.Int, _tuple DataRootTuple, _dataRootProof BinaryMerkleProof) (bool, error) {
+	var out []interface{}
+	err := _QuantumGravityBridge.contract.Call(opts, &out, "verifySharesInclusion", _namespacedRowRoots, _sharesSets, _sharesSetsProofs, _namespaceID, _rowsProofs, _rowRoots, _tupleRootNonce, _tuple, _dataRootProof)
+
+	if err != nil {
+		return *new(bool), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
+
+	return out0, err
+
+}
+
+// VerifySharesInclusion is a free data retrieval call binding the contract method 0xa93527b3.
+//
+// Solidity: function verifySharesInclusion((bytes8,bytes8,bytes32)[] _namespacedRowRoots, bytes[] _sharesSets, ((bytes8,bytes8,bytes32)[],uint256,uint256)[] _sharesSetsProofs, bytes8 _namespaceID, (bytes32[],uint256,uint256)[] _rowsProofs, bytes[] _rowRoots, uint256 _tupleRootNonce, (uint256,bytes32) _tuple, (bytes32[],uint256,uint256) _dataRootProof) view returns(bool)
+func (_QuantumGravityBridge *QuantumGravityBridgeSession) VerifySharesInclusion(_namespacedRowRoots []NamespaceNode, _sharesSets [][]byte, _sharesSetsProofs []NamespaceMerkleProof, _namespaceID [8]byte, _rowsProofs []BinaryMerkleProof, _rowRoots [][]byte, _tupleRootNonce *big.Int, _tuple DataRootTuple, _dataRootProof BinaryMerkleProof) (bool, error) {
+	return _QuantumGravityBridge.Contract.VerifySharesInclusion(&_QuantumGravityBridge.CallOpts, _namespacedRowRoots, _sharesSets, _sharesSetsProofs, _namespaceID, _rowsProofs, _rowRoots, _tupleRootNonce, _tuple, _dataRootProof)
+}
+
+// VerifySharesInclusion is a free data retrieval call binding the contract method 0xa93527b3.
+//
+// Solidity: function verifySharesInclusion((bytes8,bytes8,bytes32)[] _namespacedRowRoots, bytes[] _sharesSets, ((bytes8,bytes8,bytes32)[],uint256,uint256)[] _sharesSetsProofs, bytes8 _namespaceID, (bytes32[],uint256,uint256)[] _rowsProofs, bytes[] _rowRoots, uint256 _tupleRootNonce, (uint256,bytes32) _tuple, (bytes32[],uint256,uint256) _dataRootProof) view returns(bool)
+func (_QuantumGravityBridge *QuantumGravityBridgeCallerSession) VerifySharesInclusion(_namespacedRowRoots []NamespaceNode, _sharesSets [][]byte, _sharesSetsProofs []NamespaceMerkleProof, _namespaceID [8]byte, _rowsProofs []BinaryMerkleProof, _rowRoots [][]byte, _tupleRootNonce *big.Int, _tuple DataRootTuple, _dataRootProof BinaryMerkleProof) (bool, error) {
+	return _QuantumGravityBridge.Contract.VerifySharesInclusion(&_QuantumGravityBridge.CallOpts, _namespacedRowRoots, _sharesSets, _sharesSetsProofs, _namespaceID, _rowsProofs, _rowRoots, _tupleRootNonce, _tuple, _dataRootProof)
 }
 
 // SubmitDataRootTupleRoot is a paid mutator transaction binding the contract method 0xe23eb326.
